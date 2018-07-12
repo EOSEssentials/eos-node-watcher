@@ -1,0 +1,21 @@
+{
+  "watchInterval": 500,
+  "eosApi": "http://mainnet.eoscalgary.io/v1",
+  "initialBlock": 1290000,
+  "accounts": {
+    "monstereosio": []
+  },
+  "receivers": {
+    "eosio.token": [ "transfer:monstereosio" ]
+  },
+  "mongodb": {
+    "isActive": true,
+    "address": "mongodb://localhost:27017",
+    "database": "eos_node_watcher",
+    "prefix": "enw_"
+  },
+  "zeromq": {
+    "isActive": false,
+    "address": "tcp://*:60400"
+  }
+}

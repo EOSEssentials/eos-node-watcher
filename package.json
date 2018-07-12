@@ -1,0 +1,18 @@
+{
+  "name": "eos-node-watcher",
+  "version": "0.1.0",
+  "description": "Watches EOS Blocks and Serve/Persist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leo Ribeiro",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "mongodb": "^3.1.1",
+    "nconf": "^0.10.0",
+    "simple-node-logger": "^0.93.37",
+    "zeromq": "^4.6.0"
+  }
+}
