@@ -24,7 +24,7 @@ let isSyncing = true
 const mainLoop = async () => {
 
   if (!pushers)
-    pushers = await require('./lib/pushers')(logger, nconf.get('zeromq'), nconf.get('mongodb'))
+    pushers = await require('./lib/pushers')(logger, nconf.get('zeromq'), nconf.get('mongodb'), nconf.get('amqp'))
 
   const currentBlock = nextSyncBlock
   logger.info(`Syncing block ${currentBlock}`)

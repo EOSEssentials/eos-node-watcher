@@ -22,5 +22,10 @@
   "zeromq": {
     "isActive": false,
     "address": "tcp://*:60400"
+  },
+  "amqp": {
+    "isActive": true,
+    "address": "amqp://localhost",
+    "channel": "eosnodewatcher"
   }
 }
