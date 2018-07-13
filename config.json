@@ -3,7 +3,7 @@
   "eosApi": "http://mainnet.eoscalgary.io/v1",
   "eosHistoryApi": "http://api.cypherglass.com/v1",
   "apiTimeout": 3000,
-  "initialBlock": 1328080,
+  "initialBlock": 1293913,
   "accounts": {
     "monstereosio": [],
     "eosio.token": [
