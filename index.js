@@ -12,8 +12,8 @@ nconf.argv().env('__')
 nconf.defaults({conf: `${__dirname}/config.json`})
 nconf.file(nconf.get('conf'))
 
-const api = require('./lib/eosApi')(nconf.get('eosApi'))
-const actions = require('./lib/actions')(nconf.get('accounts'), nconf.get('receivers'))
+const api = require('./lib/eosApi')(nconf.get('eosApi'), nconf.get('eosHistoryApi'), nconf.get('apiTimeout'))
+const actions = require('./lib/actions')(nconf.get('accounts'))
 
 const watchInterval = nconf.get('watchInterval')
 
@@ -36,7 +36,9 @@ const mainLoop = async () => {
 
     if (lastChainInfo && lastChainInfo.head_block_num >= nextSyncBlock) {
       const blockInfo = await api.getBlockInfo(nextSyncBlock)
-      const transactions = actions.filteredTransactions(blockInfo)
+      const transactionsIds = actions.filteredTransactionsIds(blockInfo)
+      const transactions = transactionsIds && transactionsIds.length ?
+        await api.getBulkTransactions(transactionsIds) : null
 
       if (transactions && transactions.length) {
         pushTransactions(transactions)
@@ -74,7 +76,7 @@ const pushTransactions = transactions => {
 
 fs.readFile(LAST_BLOCK_FILE, (err,data) => {
   if (err) {
-    logger.info(`Blocks was never synced, starting from ${nextSyncBlock}`)
+    logger.info(`Blocks were never synced, starting from ${nextSyncBlock}`)
   } else {
     nextSyncBlock = Number(data) + 1
     logger.info(`Last synced block: ${nextSyncBlock} - resyncing...`)

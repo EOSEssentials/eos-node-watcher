@@ -1,12 +1,17 @@
 {
   "watchInterval": 500,
   "eosApi": "http://mainnet.eoscalgary.io/v1",
-  "initialBlock": 1290000,
+  "eosHistoryApi": "http://api.cypherglass.com/v1",
+  "apiTimeout": 3000,
+  "initialBlock": 1328080,
   "accounts": {
-    "monstereosio": []
-  },
-  "receivers": {
-    "eosio.token": [ "transfer:monstereosio" ]
+    "monstereosio": [],
+    "eosio.token": [
+      {
+        "name": "transfer",
+        "data": { "to": "monstereosio" }
+      }
+    ]
   },
   "mongodb": {
     "isActive": true,
