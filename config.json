@@ -1,7 +1,12 @@
 {
   "watchInterval": 500,
   "eosApi": "http://mainnet.eoscalgary.io/v1",
-  "eosHistoryApi": "http://api.cypherglass.com/v1",
+  "eosHistoryApi": [
+    "https://api.cypherglass.com/v1",
+    "http://fn.eossweden.se/v1",
+    "http://api.hkeos.com/v1",
+    "https://api1.eosasia.one/v1"
+  ],
   "apiTimeout": 3000,
   "initialBlock": 1293913,
   "accounts": {
